@@ -1,0 +1,25 @@
+{
+  "name": "Voila_logistics_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "set NODE_ENV=dev &&nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AhmedAbdel-Aal/Voila_logistics_app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AhmedAbdel-Aal/Voila_logistics_app/issues"
+  },
+  "homepage": "https://github.com/AhmedAbdel-Aal/Voila_logistics_app#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.7.1"
+  }
+}
