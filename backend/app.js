@@ -8,8 +8,11 @@ const postgresConfig= require("./config/keys");
 
 console.log(postgresConfig)
 
-const Pool = require('pg').Pool
-const pool = new Pool(postgresConfig)
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
+
+// const Pool = require('pg').Pool
+// const pool = new Pool(postgresConfig)
 
 
 //Entry point
