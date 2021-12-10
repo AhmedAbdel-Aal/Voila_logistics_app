@@ -4,28 +4,31 @@ const express = require('express');
 // set up express app
 const app = express();
 
-const databaseKeys = require("./config/keys");
+const postgresConfig= require("./config/keys");
 
+console.log(postgresConfig)
 
 const Pool = require('pg').Pool
-const pool = new Pool({
-  user: databaseKeys.postgresUser,
-  host: databaseKeys.postgresHostIP,
-  database: databaseKeys.postgresDatabase,
-  password: databaseKeys.postgresPassword,
-  port: databaseKeys.postgresPort,
-})
+const pool = new Pool(postgresConfig)
 
 
 //Entry point
-app.get('/menus',(req,res) =>{
-    pool.query('SELECT * FROM restaurant', (error, results) => {
-        if (error) {
-          throw error
-        }
-        res.status(200).json(results.rows)
-      })
-    })
+// app.get('/menus',(req,res) =>{
+//     pool.query('SELECT * FROM menus', (error, results) => {
+//         if (error) {
+//           throw error
+//         }
+//         res.status(200).json(results.rows)
+//       })
+// })
+
+//API routes
+const restaurantsRoutes=require("./routes/api/resturants")
+
+//Route handlers
+app.use('/restaurant', restaurantsRoutes)
+
+
 
 //Entry point
 app.get('/',(req,res) =>{
