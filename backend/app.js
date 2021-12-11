@@ -1,4 +1,5 @@
 const express = require('express');
+var cors = require('cors')
 
 
 // set up express app
@@ -10,6 +11,10 @@ console.log(postgresConfig)
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
+
+
+app.use(cors()) // Use this after the variable declaration
+
 
 // const Pool = require('pg').Pool
 // const pool = new Pool(postgresConfig)
