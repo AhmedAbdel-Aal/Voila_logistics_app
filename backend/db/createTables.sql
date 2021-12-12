@@ -12,10 +12,9 @@ create table IF NOT EXISTS restaurant(
 );
 
 create table IF NOT EXISTS menus(
-   m_id integer not null PRIMARY KEY,
+   shopify_product_id varchar(55) PRIMARY KEY,
    m_name varchar(55),
    m_picture_url text,
-   shopify_product_id varchar(55),
    rest_id integer not null,
    FOREIGN KEY(rest_id) REFERENCES restaurant (r_id)
 );
