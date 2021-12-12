@@ -7,7 +7,6 @@ const Header = (props) => {
             <h1>
                 {title}
             </h1>
-            <button className='btn'>restaurants</button>
         </div>
     )
 }

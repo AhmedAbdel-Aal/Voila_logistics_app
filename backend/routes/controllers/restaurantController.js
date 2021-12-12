@@ -1,4 +1,7 @@
 const db = require('../../db')
+const shopify = require('../../shopify')
+const axios = require('axios');
+
 
 
 module.exports.getAll = async(req,res) => {
@@ -69,4 +72,33 @@ module.exports.delete = async(req,res) => {
           res.status(200).send({messgae : `Restaurant deleted with ID: ${id}`})
       }
     })
+};
+
+module.exports.getCollectionProducts = async(req,res) => {
+  id = parseInt(req.params.id)
+  let collection_id ; 
+  db.query('SELECT * FROM restaurant WHERE r_id = $1',[id], (err, result) => {
+      if (err) {
+        console.log(err)
+      }
+      else{
+          collection_id =  result.rows[0].shopify_collection_id
+          const url = shopify.collectionProdcuts(collection_id)
+        
+          axios.get(url)
+          .then(res => {
+            const headerDate = res.headers && res.headers.date ? res.headers.date : 'no response date';
+            console.log('Status Code:', res.status);
+            console.log('Date in Response header:', headerDate);
+            res.send({data: res.data})
+          })
+          .catch(err => {
+            res.send(err.message)
+          });
+      }
+  })
+
+
+
+
 };

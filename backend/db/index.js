@@ -1,5 +1,5 @@
 const { Pool } = require('pg')
-const postgresConfig= require("../config/keys");
+const postgresConfig= require("../config/keys").postgres;
 const pool = new Pool(postgresConfig)
 
 module.exports = {
