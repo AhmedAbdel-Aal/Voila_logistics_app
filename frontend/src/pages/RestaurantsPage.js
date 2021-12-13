@@ -2,8 +2,7 @@ import Restaurant from '../components/Restaurant'
 import { useState, useEffect } from 'react'
 
 function RestaurantsPage(props) {
-    const [restaurants, setRestaurants] = useState([])
-  
+    const [restaurants, setRestaurants] = useState([])  
     useEffect(() => {
       const getRestaurants = async () => {
         const allRestaurants = await fetchRestaurants()
@@ -12,6 +11,7 @@ function RestaurantsPage(props) {
   
       getRestaurants()
     }, []);
+
   
     // Fetch restayrants
     const fetchRestaurants = async () => {

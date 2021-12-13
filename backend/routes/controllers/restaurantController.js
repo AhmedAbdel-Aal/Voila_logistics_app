@@ -84,7 +84,7 @@ module.exports.getCollectionProducts = async(req,res) => {
       else{
           collection_id =  result.rows[0].shopify_collection_id
           const url = shopify.collectionProdcuts(collection_id)
-        
+          console.log(url)
           axios.get(url)
           .then(res => {
             const headerDate = res.headers && res.headers.date ? res.headers.date : 'no response date';
