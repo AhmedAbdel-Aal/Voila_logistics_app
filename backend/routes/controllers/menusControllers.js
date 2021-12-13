@@ -7,13 +7,13 @@ const axios = require('axios');
 module.exports.getMenu = async(req, res) => {
     const shopify_product_id = req.params.id;
     const url = shopify.getProduct(shopify_product_id);
-
+    console.log(url)
     axios.get(url)
-    .then(res => {
-      const headerDate = res.headers && res.headers.date ? res.headers.date : 'no response date';
-      console.log('Status Code:', res.status);
+    .then(result => {
+      const headerDate = result.headers && result.headers.date ? result.headers.date : 'no response date';
+      console.log('Status Code:', result.status);
       console.log('Date in Response header:', headerDate);
-      res.send({data: res.data})
+      res.send({data: result.data})
     })
     .catch(err => {
       res.send(err.message)

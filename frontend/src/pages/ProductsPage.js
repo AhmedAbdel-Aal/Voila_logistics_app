@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import Product from '../components/Product';
 function ProductsPage() {
-    const [prodcuts, setProducts] = useState([])
+    const [products, setProducts] = useState([])
     useEffect(() => {
       const getProdcuts = async () => {
         const Products = await fetchProdcuts()
@@ -24,7 +24,7 @@ function ProductsPage() {
     return (
         <div>
         {
-            prodcuts.map((product, index) => (
+            products.map((product, index) => (
             <Product key={index} product={product}/>
             ))
         }
