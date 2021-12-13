@@ -15,10 +15,12 @@ app.use(cors()) // Use this after the variable declaration
 //API routes
 const restaurantsRoutes=require("./routes/api/resturants")
 const ordersRoutes=require("./routes/api/orders")
+const menusRoutes=require("./routes/api/menus")
 
 //Route handlers
 app.use('/restaurant', restaurantsRoutes)
 app.use('/orders', ordersRoutes)
+app.use('/menus', menusRoutes)
 
 
 

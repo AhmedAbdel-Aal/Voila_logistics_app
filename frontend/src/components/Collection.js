@@ -8,7 +8,7 @@ function Collection(props) {
         {
         collection.length>0?(
             collection.map((product, index) => (
-            <Product key={index} restaurant={product}/>
+            <Product key={index} product={product}/>
             ))
         )
         :

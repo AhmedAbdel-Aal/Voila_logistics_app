@@ -24,16 +24,19 @@ module.exports.getMenu = async(req, res) => {
 
 module.exports.getMenus = async(req, res) => {
     const url = shopify.getProducts();
-
+    console.log(url)
     axios.get(url)
-    .then(res => {
-      const headerDate = res.headers && res.headers.date ? res.headers.date : 'no response date';
-      console.log('Status Code:', res.status);
+    .then(result => {
+      const headerDate = result.headers && result.headers.date ? result.headers.date : 'no response date';
+      console.log('Status Code:', result.status);
       console.log('Date in Response header:', headerDate);
-      res.send({data: res.data})
+      return result.data
     })
     .catch(err => {
       res.send(err.message)
+    })
+    .then((data)=>{
+      res.send({data})
     });
 
 };
