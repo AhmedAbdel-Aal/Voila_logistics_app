@@ -1,0 +1,58 @@
+version: "3.7"
+
+services:
+  ##############################
+  # database Container
+  ##############################
+  postgres:
+    image: ""
+    hostname: postgres
+    container_name: postgres
+    restart: always
+    build:
+      context: ./db
+      dockerfile: Dockerfile.db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: voila
+      DB_USER: voila_dev
+      DB_PASSWORD: HelloWorld
+
+    volumes:
+      - vikranth:/var/lib/postgresql/data
+  ##############################
+  # backend Container
+  ##############################
+  api:
+    env_file: "./API/.env"
+    container_name: backend
+    restart: always
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    image: ""
+    depends_on:
+      - postgres
+
+    ports:
+      - "5000:5000"
+
+  ##############################
+  # frontend Container
+  ##############################
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    image: ""
+    restart: always
+    container_name: frontend
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+
+
+

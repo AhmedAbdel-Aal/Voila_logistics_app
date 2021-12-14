@@ -1,0 +1,4 @@
+#FROM postgres:13.3-alpine THis is not working with initialization
+
+FROM postgres:11.2-alpine
+COPY ./pg_dump.sql /docker-entrypoint-initdb.d/
