@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 export default function MediaCard(props) {
-   const{title, src} = props
+   const{title, src, onClick} = props
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -20,6 +20,9 @@ export default function MediaCard(props) {
         <Typography gutterBottom variant="h5" component="div">
           {title}
         </Typography>
+        <CardActions>
+        <Button size="small" onClick={onClick}>show varaints</Button>
+      </CardActions>
       </CardContent>
     </Card>
   );
