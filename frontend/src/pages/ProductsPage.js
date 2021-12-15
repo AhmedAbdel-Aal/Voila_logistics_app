@@ -17,6 +17,7 @@ function ProductsPage() {
         const res = await fetch(`http://localhost:5000/menus`)
         console.log(res)
         const data = await res.json()
+        console.log("meeeh")
         console.log(data.data.products)
         return data.data.products
     }

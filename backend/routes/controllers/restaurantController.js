@@ -5,7 +5,7 @@ const axios = require('axios');
 
 
 module.exports.getAll = async(req,res) => {
-    await db.query('SELECT * FROM restaurant', (err, result) => {
+    await db.query('SELECT * FROM public.restaurant', (err, result) => {
         if (err) {
           console.log(err)
         }
@@ -17,7 +17,7 @@ module.exports.getAll = async(req,res) => {
 
 module.exports.getOne = async(req,res) => {
   id = parseInt(req.params.id)
-  db.query('SELECT * FROM restaurant WHERE r_id = $1',[id], (err, result) => {
+  db.query('SELECT * FROM public.restaurant WHERE r_id = $1',[id], (err, result) => {
       if (err) {
         console.log(err)
       }
@@ -31,7 +31,7 @@ module.exports.create = async(req,res) => {
   console.log(req.body)
   const {r_id,r_name,r_street_name,r_building_number,r_extra_info,r_city,r_country,shopify_collection_id} = req.body;
   const query_params = [r_id,r_name,r_street_name,r_building_number,r_extra_info,r_city,r_country,shopify_collection_id]
-  const insert_query =  "INSERT INTO restaurant (r_id,r_name,r_street_name,r_building_number,r_extra_info,r_city,r_country,shopify_collection_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)"
+  const insert_query =  "INSERT INTO public.restaurant (r_id,r_name,r_street_name,r_building_number,r_extra_info,r_city,r_country,shopify_collection_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)"
   
   db.query(insert_query, query_params, (err, result) => {
       if (err) {

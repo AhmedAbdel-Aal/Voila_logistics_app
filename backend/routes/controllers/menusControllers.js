@@ -16,7 +16,7 @@ module.exports.getMenu = async(req, res) => {
       res.send({data: result.data})
     })
     .catch(err => {
-      res.send(err.message)
+      console.log(err.message)
     });
 
 };
@@ -30,13 +30,13 @@ module.exports.getMenus = async(req, res) => {
       const headerDate = result.headers && result.headers.date ? result.headers.date : 'no response date';
       console.log('Status Code:', result.status);
       console.log('Date in Response header:', headerDate);
-      return result.data
+      res.send({data:result.data})
     })
     .catch(err => {
-      res.send(err.message)
+      console.log(err.message)
     })
     .then((data)=>{
-      res.send({data})
+      console.log({data})
     });
 
 };

@@ -5,33 +5,31 @@ services:
   # database Container
   ##############################
   postgres:
-    image: ""
-    hostname: postgres
+    image: postgres:10.2-alpine
+    hostname: localhost
     container_name: postgres
     restart: always
     build:
       context: ./db
       dockerfile: Dockerfile.db
     ports:
-      - "5432:5432"
+      - "5432"
     environment:
       POSTGRES_DB: voila
-      DB_USER: voila_dev
-      DB_PASSWORD: HelloWorld
-
+      POSTGRES_USER: voila_dev
+      POSTGRES_PASSWORD: HelloWorld
     volumes:
-      - vikranth:/var/lib/postgresql/data
+      - ./ahmed:/data
   ##############################
   # backend Container
   ##############################
-  api:
-    env_file: "./API/.env"
+  backend:
     container_name: backend
     restart: always
     build:
       context: ./backend
       dockerfile: ./Dockerfile
-    image: ""
+    image: back
     depends_on:
       - postgres
 
@@ -45,12 +43,11 @@ services:
     build:
       context: ./frontend
       dockerfile: ./Dockerfile
-    image: ""
+    image: front
     restart: always
     container_name: frontend
     ports:
-      - "80:80"
-      - "443:443"
+      - "3000:3000"
     depends_on:
       - backend
 
