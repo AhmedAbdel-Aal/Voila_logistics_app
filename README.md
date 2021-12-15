@@ -17,11 +17,13 @@
      
      `cd Voila_logistics_app`
      
-  2- build the app image and getting it up running by
+  2- add the `keys_dev.js` file in the path `/backend/config`
+     
+  3- build the app image and getting it up running by
     
     `docker-compose up --build`
     
-  3- Open the browser on `localhost:3000` and interact with the UI
+  4- Open the browser on `localhost:3000` and interact with the UI
   
  ## How it is build
  
