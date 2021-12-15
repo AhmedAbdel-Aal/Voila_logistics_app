@@ -1,0 +1,38 @@
+- activate postgres server locally
+    $ sudo service postgresql start
+
+- start psql CLI - this will start with root user (postgres=#)
+    $ psql postgres
+
+- create role
+    $ CREATE ROLE voila_dev WITH LOGIN PASSWORD <password>;
+
+- give access to the created role to create databse
+    $ ALTER ROLE me CREATEDB;
+
+- start postgres with the created role (postgres=>)
+    $ psql -d postgres -U voila_dev;
+
+- create devlopment database
+    $ CREATE DATABASE voila;
+
+- check the database is found by
+    $ \list
+
+- connect to the database
+    $ \c voila;
+
+- exit psql 
+    $ \q
+
+- navigate to the createTables.sql
+    $ cd <path to file>
+
+- connect to our database with the created role in one step
+    $ psql voila voila_dev
+
+- run the createTables.sql file
+    $ \i createTables.sql
+
+- check the created reations
+    $ \dt
