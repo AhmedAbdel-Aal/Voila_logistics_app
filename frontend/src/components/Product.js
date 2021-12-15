@@ -3,7 +3,7 @@ import MediaCard from './MediaCard'
 import { useNavigate } from "react-router-dom";
 
 function Product(props) {
-    const {key, product} = props
+    const {product} = props
     let navigate = useNavigate();
 
     return (

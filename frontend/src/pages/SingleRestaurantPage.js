@@ -15,6 +15,13 @@ function SingleRestaurantPage(props) {
   
       getRestaurants()
     }, []);
+        // Fetch restayrants
+    const fetchRestaurant = async () => {
+      const res = await fetch(`http://localhost:5000/restaurant/${id}`)
+      const data = await res.json()
+      return data.data[0]
+    }
+
 
     const [collection, setCollection] = useState([])
     useEffect(() => {
@@ -27,19 +34,10 @@ function SingleRestaurantPage(props) {
     }, []);
 
   
-    // Fetch restayrants
-    const fetchRestaurant = async () => {
-      const res = await fetch(`http://localhost:5000/restaurant/${id}`)
-      const data = await res.json()
-      console.log(data.data)
-      return data.data[0]
-    }
 
     const fetchCollection = async () => {
         const res = await fetch(`http://localhost:5000/restaurant/${id}/collection`)
-        console.log(res)
         const data = await res.json()
-        console.log(data.data)
         return data.data
       }
   

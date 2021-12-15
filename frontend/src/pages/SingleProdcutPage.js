@@ -18,12 +18,8 @@ function SingleProdcutPage() {
 
     // Fetch restayrants
     const fetchProdcut = async () => {
-        
-        console.log(id)
         const res = await fetch(`http://localhost:5000/menus/${id}`)
-        console.log(res)
         const data = await res.json()
-        console.log(data.data.product)
         return data.data.product
     }
 
@@ -33,7 +29,6 @@ function SingleProdcutPage() {
         {
           (product)?
           (
-            // console.log(product)
             product.variants.map((v, index) => (
             <MediaCard key={index} src={product.image.src} title={v.title+ ", "+v.price + " Euro"} />
             ))

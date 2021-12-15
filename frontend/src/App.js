@@ -1,5 +1,4 @@
 import './App.css';
-import { useState, useEffect } from 'react'
 import RestaurantsPage from './pages/RestaurantsPage';
 import SingleRestaurantPage from './pages/SingleRestaurantPage'
 import ProductsPage from './pages/ProductsPage';

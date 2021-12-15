@@ -17,7 +17,6 @@ function RestaurantsPage(props) {
     const fetchRestaurants = async () => {
       const res = await fetch('http://localhost:5000/restaurant')
       const data = await res.json()
-      console.log(data)
       return data.data
     }
   
